@@ -1,0 +1,56 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite cache
+.vite/
+
+# Mac system files
+.DS_Store
+
+# IDE/editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Debug folders/files
+*.log
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Coverage directory used by testing tools
+coverage/
+
+# MongoDB dump files (if you keep dumps)
+dump/
+
+# Optional output of your backend logs (if any)
+logs/
+
+# Optional build artifacts for backend (if you build it separately)
+dist-backend/
