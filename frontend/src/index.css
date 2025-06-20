@@ -1,0 +1,365 @@
+/* Reset + base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.app-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
+header {
+  background: #556cd6;
+  color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+nav .nav-link {
+  color: #ffdd57;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav .nav-link:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #eee;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Dashboard styles */
+.dashboard h2 {
+  margin-bottom: 1rem;
+  color: #556cd6;
+}
+
+.service-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  gap: 1rem;
+}
+
+.service-item {
+  background: #f0f4ff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgba(85,108,214,0.2);
+  transition: transform 0.15s ease-in-out;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+}
+
+.service-link {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.service-state {
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  text-transform: capitalize;
+  user-select: none;
+}
+
+.state-active {
+  background-color: #4caf50;
+}
+
+.state-inactive {
+  background-color: #9e9e9e;
+}
+
+.state-planned {
+  background-color: #2196f3;
+}
+
+.state-deprecated {
+  background-color: #f44336;
+}
+
+/* Service Details */
+.service-details {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.service-details h2 {
+  margin-bottom: 1rem;
+  color: #556cd6;
+}
+
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.details-table th, .details-table td {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.details-table th {
+  background-color: #f0f4ff;
+  color: #333;
+  width: 200px;
+}
+
+.feature-list {
+  list-style-type: disc;
+  margin-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #556cd6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Loading & error */
+.loading {
+  color: #2196f3;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.error {
+  color: #f44336;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.add-service {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #f9fafb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.add-service h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.service-form fieldset {
+  margin-bottom: 1.2rem;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.service-form legend {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.service-form label {
+  display: block;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.service-form input[type="text"],
+.service-form input[type="date"],
+.service-form select {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 0.3rem;
+  box-sizing: border-box;
+}
+
+.service-form input[type="checkbox"] {
+  margin-left: 0.5rem;
+  transform: scale(1.3);
+}
+
+.service-form button {
+  background-color: #4caf50;
+  color: white;
+  font-weight: 700;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.service-form button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.service-form .error {
+  margin-top: 0.8rem;
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.btn-add {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add:hover {
+  background-color: #45a049;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+  transition: background-color 0.2s ease;
+  height: 32px;
+  align-self: center;
+}
+
+.btn-delete:hover {
+  background-color: #d32f2f;
+}
+
+.add-service-form {
+  margin-bottom: 1.5rem;
+  background: #eef6f7;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+  max-width: 420px;
+}
+
+.add-service-form div {
+  margin-bottom: 0.8rem;
+}
+
+.add-service-form label {
+  font-weight: 600;
+  color: #333;
+}
+
+.add-service-form input[type="text"] {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 0.3rem;
+  transition: border-color 0.2s ease;
+}
+
+.add-service-form input[type="text"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-buttons button {
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  font-size: 1rem;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.form-buttons button[type="submit"]:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #ddd;
+  color: #555;
+}
+
+.form-buttons button[type="button"]:hover:not(:disabled) {
+  background-color: #ccc;
+}

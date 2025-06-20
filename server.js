@@ -8,6 +8,9 @@ const app = express();
 const port = process.env.PORT || 8638;
 const basePath = '/tmf-api/serviceInventoryManagement/v5';
 
+// <-- Add your external base URL here -->
+const EXTERNAL_BASE_URL = 'https://tmforum-gjrc.onrender.com' + basePath;
+
 app.use(cors());
 app.use(express.json());
 
@@ -26,7 +29,7 @@ const createMinimalRelatedService = (req, serviceObj = {}) => {
   const id = serviceObj.id || 'unknown';
   return {
     id,
-    href: serviceObj.href || `${req.protocol}://${req.hostname}:${port}${basePath}/service/${id}`,
+    href: serviceObj.href || `${EXTERNAL_BASE_URL}/service/${id}`,
     '@type': 'ServiceRef',
     '@referredType': 'Service',
     state: { value: serviceObj.state || 'active', '@type': 'ServiceStateType' },
@@ -72,7 +75,7 @@ app.get(`${basePath}/service`, async (req, res) => {
     const services = await Service.find(filter, projection);
     const result = services.map(service => {
       const obj = service.toObject();
-      obj.href = obj.href || `${req.protocol}://${req.hostname}:${port}${basePath}/service/${obj.id}`;
+      obj.href = obj.href || `${EXTERNAL_BASE_URL}/service/${obj.id}`;
       obj['@type'] = obj['@type'] || 'Service';
       if (obj.serviceRelationship) {
         obj.serviceRelationship = obj.serviceRelationship.map(rel => ({
@@ -104,7 +107,7 @@ app.get(`${basePath}/service/:id`, async (req, res) => {
         if (service[field] !== undefined) result[field] = service[field];
       });
       result.id = service.id;
-      result.href = service.href || `${req.protocol}://${req.hostname}:${port}${basePath}/service/${service.id}`;
+      result.href = service.href || `${EXTERNAL_BASE_URL}/service/${service.id}`;
       result['@type'] = service['@type'] || 'Service';
     }
 
@@ -150,7 +153,7 @@ app.post(`${basePath}/service`, async (req, res) => {
 
     const newService = new Service({
       id: serviceId,
-      href: `${req.protocol}://${req.hostname}:${port}${basePath}/service/${serviceId}`,
+      href: `${EXTERNAL_BASE_URL}/service/${serviceId}`,
       '@type': type,
       state,
       serviceSpecification,
@@ -196,6 +199,18 @@ app.patch(`${basePath}/service/:id`, async (req, res) => {
   }
 });
 
+// <-- ADD DELETE endpoint -->
+app.delete(`${basePath}/service/:id`, async (req, res) => {
+  try {
+    const deleted = await Service.findOneAndDelete({ id: req.params.id });
+    if (!deleted) return res.status(404).json({ error: 'Service not found' });
+    res.status(204).send(); // No Content
+  } catch (err) {
+    console.error('DELETE /service/:id error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.listen(port, () => {
-  console.log(`🚀 TMF638 mock server running at http://localhost:${port}${basePath}`);
+  console.log(`🚀 TMF638 mock server running at port ${port}${basePath}`);
 });

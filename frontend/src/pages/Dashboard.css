@@ -1,0 +1,80 @@
+.dashboard-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  gap: 1.2rem;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.15);
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.service-card:hover,
+.service-card:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.service-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #0070f3;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.state-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+  user-select: none;
+  display: inline-block;
+}
+
+.state-badge.active {
+  background-color: #22c55e;
+  color: white;
+}
+
+.state-badge.inactive {
+  background-color: #ef4444;
+  color: white;
+}
+
+.state-badge.unknown {
+  background-color: #6b7280;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 1.3rem;
+  color: #666;
+}
