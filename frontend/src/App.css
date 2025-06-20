@@ -1,0 +1,27 @@
+.app-container {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+.content.shifted {
+  margin-left: 240px;
+}
+
+@media (max-width: 768px) {
+  .content.shifted {
+    margin-left: 0;
+  }
+}
